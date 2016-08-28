@@ -104,13 +104,18 @@
         self.backgroundColor = backgroundColor;
     } else {
         UIColor *normalColor = [self backgroundColorForState:UIControlStateNormal];
-        self.backgroundColor = normalColor;
+        if (normalColor) {
+            self.backgroundColor = normalColor;
+        }
     }
     
     if (borderColor) {
         self.layer.borderColor = borderColor.CGColor;
     } else {
-        self.layer.borderColor = [self borderColorForState:UIControlStateNormal].CGColor;
+        UIColor *normalColor = [self borderColorForState:UIControlStateNormal];
+        if (normalColor) {
+            self.layer.borderColor = normalColor.CGColor;
+        }
     }
 }
 
